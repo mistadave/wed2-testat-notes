@@ -1,4 +1,4 @@
-# wed2-testat-notes
+# wed2-testat-notes ![Build Status](https://travis-ci.org/mistadave/wed2-testat-notes.svg?branch=master)
 Notizen-Webapplikation um notizen zu verwalten.
 
 * nedb [documentation](https://github.com/louischatriot/nedb#creatingloading-a-database)
