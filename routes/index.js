@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var notes = require('../controller/notesController.js');
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-    res.render('index', {title: 'Express'});
-});
+router.get('/', notes.showIndex);
+router.get('/writeNote', notes.newNote);
 
 module.exports = router;

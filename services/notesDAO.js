@@ -2,7 +2,7 @@
  * Created by David on 19.10.2016.
  */
 var Datastore = require('nedb');
-var db = Datastore({filename: './data/notes.db', autoload: true});
+var db = new Datastore({ filename: './data/notes.db', autoload: true });
 
 function Note(title, description, importance, dueToDate, done) {
     this.title = title;
@@ -28,9 +28,9 @@ function publicSetDone(id, callback) {
 }
 
 function publicDelete(id, callback) {
-    db.delete({_id: id},), function (err, doc) {
+    db.delete({_id: id}, function (err, doc) {
         callback(err, doc);
-    }
+    });
 }
 
 function publicGet(id, callback) {
