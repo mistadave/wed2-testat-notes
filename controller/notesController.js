@@ -37,9 +37,9 @@ module.exports.createNote = function(req, res) {
     console.log(req.body);
     console.log(req.params);
     var note = notesDAO.add(req.body.title, req.body.description, req.body.importance, req.body.dueToDate, function(err, note) {
-        console.log("NOTE in createNote:");
         console.log(note);
-        // TODO: Add {style: css} to note JSON and we are set with the style problem
+        note['style'] = css;
+        console.log(note);
        res.render("showNewNote", note);
     });
 };
@@ -48,7 +48,39 @@ module.exports.deleteNote = function(req, res) {
     console.log(req.params);
     var note = notesDAO.delete(req.params.id, function(err, note) {
         console.log(note);
-        // TODO: Add {style: css} to note JSON and we are set with the style problem
+        note['style'] = css;
         res.render("showNewNote", note);
     });
 };
+
+/*
+ * sorting routes
+ */
+// TODO: sort as requested and send notes back
+module.exports.showByFinishDate = function(req, res) {
+    var notes = notesDAO.all(function(err, notes) {
+        console.log(notes);
+        res.render("index", notes);
+    });
+};
+
+module.exports.showByCreatedDate = function(req, res) {
+    var notes = notesDAO.all(function(err, notes) {
+        console.log(notes);
+        res.render("index", notes);
+    });
+};
+
+module.exports.showByImportance = function(req, res) {
+    var notes = notesDAO.all(function(err, notes) {
+        console.log(notes);
+        res.render("index", notes);
+    });
+};
+
+module.exports.showFinished = function(req, res) {
+    var notes = notesDAO.all(function(err, notes) {
+        console.log(notes);
+        res.render("index", notes);
+    });
+}
