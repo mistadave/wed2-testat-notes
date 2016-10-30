@@ -1,3 +1,6 @@
+# DB file
+data/notes.db
+
 # Logs
 logs
 *.log

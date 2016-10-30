@@ -1,19 +1,17 @@
-/**
- * Created by David on 19.10.2016.
- */
 var Datastore = require('nedb');
-var db = new Datastore({ filename: './data/notes.db', autoload: true });
+var db = new Datastore({ filename: '../data/notes.db', autoload: true });
 
-function Note(title, description, importance, dueToDate, done) {
+function Note(title, description, importance, dueToDate) {
     this.title = title;
     this.description = description;
     this.importance = importance;
+    this.addDate = JSON.stringify(new Date());
     this.dueToDate = dueToDate;
-    this.done = done;
+    this.done = false;
 }
 
-function publicAddNote(title, description, importance, dueToDate) {
-    var note = new Note(title, description, importance, dueToDate, false)
+function publicAddNote(title, description, importance, dueToDate, callback) {
+    var note = new Note(title, description, importance, dueToDate);
     db.insert(note, function (err, newDoc) {
         if (callback) {
             callback(err, newDoc);
@@ -22,14 +20,16 @@ function publicAddNote(title, description, importance, dueToDate) {
 }
 
 function publicSetDone(id, callback) {
-    db.update({_id: id}, {$set: {"state": true}}, {}, function (err, doc) {
+    db.update({_id: id}, {$set: {"done": true}}, {}, function (err, doc) {
         publicGet(id, callback);
     });
 }
 
 function publicDelete(id, callback) {
-    db.delete({_id: id}, function (err, doc) {
-        callback(err, doc);
+    db.remove({_id: id}, {}, function (err, doc) {
+        if(callback) {
+            callback(err, doc);
+        }
     });
 }
 
@@ -39,7 +39,7 @@ function publicGet(id, callback) {
     });
 }
 
-function publicAll() {
+function publicAll(callback) {
     db.find({}, function (err, docs) {
         callback(err, docs);
     });
