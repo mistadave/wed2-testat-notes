@@ -3,7 +3,8 @@ var router = express.Router();
 var notes = require('../controller/notesController.js');
 
 router.get("/", notes.showIndex);
-router.get("/writeNote", notes.showNewNote);
+router.get("/changeStyle", notes.changeStyle);
+router.get("/newNote", notes.showNewNote);
 router.get("/notes", notes.getNotes); //get all the notes
 router.get("/notes/:id/", notes.getNote); //get one note by id
 // TODO: POST: sent as JSON object in body works! Tested with POSTMAN.

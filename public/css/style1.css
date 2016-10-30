@@ -1,7 +1,7 @@
 body {
     padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-    display: block;
+    background: #ffffff;
 }
 
 a {
@@ -25,4 +25,8 @@ h3:after {
     display: inline-block;
     margin: 2px 2px;
     cursor: pointer;
+}
+
+input {
+    background-color: #ffffff;
 }
