@@ -1,7 +1,44 @@
+<!DOCTYPE html>
 <html>
-<p>Willkommen! Zu der besten Note App auf der Welt!</p>
-<img src='/images/note.jpg'>
-<form action='/writeNote' method='get'>
-    <input type='submit' value='New Note'>
-</form>
+    <head>
+        <meta charset="UTF-8">
+        <title>Neue TODO</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/index/changeStyle.js"></script>
+        <script src="js/index/showFinishedNotes.js"></script>
+        <script src="js/index/sortNotes.js"></script>
+    </head>
+    <body>
+        <h3>Willkommen! Zu der besten Note App auf der Welt!</h3>
+        <div class="images">
+            <img src='/images/note.jpg'>
+        </div>
+        <div class="">
+            <form action='/writeNote' method='get'>
+                <div class="">
+                    <input type='submit' value='Create new Note' class="button">
+                </div>
+                <div class="">
+                    <select name="">
+                        <option value="blackWhite">Black-White-Style</option>
+                        <option value="blackBlue">Black-Blue-Style</option>
+                    </select>
+                </div>
+                <div class="">
+                    <button type="button" class="button">By finish Date</button>
+                </div>
+                <div class="">
+                    <button type="button" class="button">By created Date</button>
+                </div>
+                <div class="">
+                    <button type="button" class="button">By Importance</button>
+                </div>
+                <div class="">
+                    <button type="button" class="button">Show finished</button>
+                </div>
+            </form>
+        </div>
+        <div class="" id="notesPlaceholder"></div>
+    </body>
 </html>

@@ -1,0 +1,28 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    display: block;
+}
+
+a {
+    color: #00B7FF;
+}
+
+h3:after {
+    content: ' ';
+    display: block;
+    border: 1px solid #adadad;
+}
+
+.button {
+    background-color: #e2e2e2;
+    border: none;
+    border-radius: 8px;
+    color: #000000;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 2px 2px;
+    cursor: pointer;
+}

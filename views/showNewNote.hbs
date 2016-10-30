@@ -1,8 +1,39 @@
+<!DOCTYPE html>
 <html>
-<head>
-
-</head>
-<body>
-<h1>Wellkomme to WED2 TESTAT</h1>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Neue TODO</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/showNewNote/checkRequired.js"></script>
+    </head>
+    <body>
+        <h3>Neue TODO</h3>
+        <div class="">
+            <form name="writeNote">
+                <div class="">
+                    <label>Title</label>
+                    <input type="text" placeholder="Beispiel" required>
+                </div>
+                <div class="">
+                    <label>Beschreibung</label>
+                    <input type="text" placeholder="Deine Notiz" required>
+                </div>
+                <div class="">
+                    <label>Wichtigkeit</label>
+                    <input type="number" placeholder="5" min="1" max="5" required>
+                </div>
+                <div class="">
+                    <label>Fertig bis</label>
+                    <input type="date" required>
+                </div>
+                <div class="">
+                    <input type="checkbox"><label>Erledigt!</label>
+                </div>
+                <button type="submit" class="button">Anlegen</button>
+                <button type="reset" class="button">Abbruch</button>
+            </form>
+        </div>
+        <div id="notePlaceholder"></div>
+    </body>
 </html>
