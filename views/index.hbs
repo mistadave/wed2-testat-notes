@@ -34,5 +34,31 @@
         </div>
         <!-- TODO: Handelbars here -->
         <div class="" id="notesPlaceholder"></div>
+        <div class="">
+            <form>
+                {{#if this}}
+                    {{#each this}}
+                        <div class="">
+                            <input type="checkbox"><label>Finished</label>
+                        </div>
+                        <div class="">
+                            {{title}}
+                        </div>
+                        <div class="">
+                            <input type="text" value="{{description}}" readonly>
+                        </div>
+                        <div class="">
+                            {{importance}}
+                        </div>
+                        <div class="">
+                            <button type="submit" formaction="/editNote" formmethod="post">Edit</button>
+                        </div>
+                    {{/each}}
+                {{else}}
+                    <div class="">No data yet</div>
+                {{/if}}
+            </form>
+        </div>
+
     </body>
 </html>
