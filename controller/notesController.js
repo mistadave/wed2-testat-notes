@@ -20,6 +20,7 @@ module.exports.showNewNote = function(req, res) {
 module.exports.getNotes = function(req, res) {
         var notes = notesDAO.all(function(err, notes) {
             console.log(notes);
+            note['style'] = css;
             res.render("index", notes);
         });
 };
@@ -60,6 +61,7 @@ module.exports.deleteNote = function(req, res) {
 module.exports.showByFinishDate = function(req, res) {
     var notes = notesDAO.all(function(err, notes) {
         console.log(notes);
+        notes['style'] = css;
         res.render("index", notes);
     });
 };
@@ -67,6 +69,7 @@ module.exports.showByFinishDate = function(req, res) {
 module.exports.showByCreatedDate = function(req, res) {
     var notes = notesDAO.all(function(err, notes) {
         console.log(notes);
+        notes['style'] = css;
         res.render("index", notes);
     });
 };
@@ -74,6 +77,7 @@ module.exports.showByCreatedDate = function(req, res) {
 module.exports.showByImportance = function(req, res) {
     var notes = notesDAO.all(function(err, notes) {
         console.log(notes);
+        notes['style'] = css;
         res.render("index", notes);
     });
 };
@@ -81,6 +85,7 @@ module.exports.showByImportance = function(req, res) {
 module.exports.showFinished = function(req, res) {
     var notes = notesDAO.all(function(err, notes) {
         console.log(notes);
+        notes['style'] = css;
         res.render("index", notes);
     });
 }
