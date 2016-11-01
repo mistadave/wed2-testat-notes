@@ -32,7 +32,29 @@
                 <button type="reset" class="button">Abbruch</button>
             </form>
         </div>
-        <!-- TODO: Handelbars here -->
-        <div id="notePlaceholder"></div>
+        <h3>Result</h3>
+        <div class="">
+            <form>
+                {{#if this}}
+                    <div class="">
+                        <input type="checkbox"><label>Finished</label>
+                    </div>
+                    <div class="">
+                        {{title}}
+                    </div>
+                    <div class="">
+                        <input type="text" value="{{description}}" readonly>
+                    </div>
+                    <div class="">
+                        {{importance}}
+                    </div>
+                    <div class="">
+                        <button type="submit" formaction="/editNote" formmethod="post">Edit</button>
+                    </div>
+                {{else}}
+                    <div class="">No data yet</div>
+                {{/if}}
+            </form>
+        </div>
     </body>
 </html>
