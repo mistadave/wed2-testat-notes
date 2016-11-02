@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 var notes = require('../controller/notesController.js');
 var style = require('../services/styleSwitcher');
-router.get("/", style.changeStyle, notes.showIndex);
+router.get("/", style.changeStyle, notes.getNotes);
 router.get("/changeStyle", notes.changeStyle);
 router.get("/notes/create", notes.showNewNote);
+router.post("/notes/create", notes.showNewNote);
 router.get("/notes", notes.getNotes); //get all the notes
 router.get("/notes/:id", notes.getNote); //get one note by id
 // TODO: POST: sent as JSON object in body works! Tested with POSTMAN.
