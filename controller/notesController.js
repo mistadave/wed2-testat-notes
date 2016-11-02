@@ -10,7 +10,9 @@ module.exports.changeStyle = function(req, res) {
 };
 
 module.exports.showIndex = function(req, res) {
-    res.render("index", {style: css});
+    res.render("index", {
+        title: "My notes"
+    });
 };
 
 module.exports.showNewNote = function(req, res) {

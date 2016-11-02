@@ -10,11 +10,22 @@ var hbs = require('express-hbs');
 var routes = require('./routes/noteRoutes');
 
 var app = express();
+var fp = require('path');
 
+function relative(path) {
+    return fp.join(__dirname, path);
+}
+
+var viewsDir = relative('views');
+
+app.use(express.static(relative('public')));
 // view engine setup
-app.engine('hbs', hbs.express4());
+app.engine('hbs', hbs.express4({
+    defaultLayout: relative('views/layouts/default.hbs')
+}));
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', viewsDir);
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -34,7 +45,7 @@ app.use(require("method-override")(function(req, res){
 }));
 
 app.use(require('./routes/noteRoutes.js'));
-app.use(express.static(path.join(__dirname, '/public')));
+//app.use(express.static(path.join(__dirname, '/public')));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
