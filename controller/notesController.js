@@ -36,8 +36,11 @@ module.exports.getNotes = function(req, res) {
 
 module.exports.getNote = function(req, res) {
     notesDAO.get(req.params.id, function (err, note) {
-        console.log(note);
-        res.render("newNote", note);
+        console.log("note: " + note);
+        res.render("note", {
+            title: "Note " + note.title,
+            note: note
+        });
     });
 };
 
