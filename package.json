@@ -18,6 +18,8 @@
     "method-override": "*",
     "morgan": "~1.7.0",
     "serve-favicon": "^2.3.0",
-    "nedb": "^1.1.2"
+    "nedb": "^1.1.2",
+    "gulp": "*",
+    "gulp-supervisor": "*"
   }
 }
