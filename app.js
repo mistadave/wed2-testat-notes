@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var json = require('express-json');
 var hbs = require('express-hbs');
-
+var session = require('express-session');
 var routes = require('./routes/noteRoutes');
 
 var app = express();
@@ -26,7 +26,6 @@ app.engine('hbs', hbs.express4({
 app.set('view engine', 'hbs');
 app.set('views', viewsDir);
 
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -34,6 +33,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(json());
+app.use(session({
+    secret: 'de9429425c62fdffa4068d2758d3390c2a828531222797ba9fa641da1dce0055',
+    resave: false,
+    saveUninitialized: true
+}));
 
 // posibility to work wit app.put, app.delete etc. - very REST conform ^^
 app.use(require("method-override")(function(req, res){
@@ -45,7 +49,6 @@ app.use(require("method-override")(function(req, res){
 }));
 
 app.use(require('./routes/noteRoutes.js'));
-//app.use(express.static(path.join(__dirname, '/public')));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -77,6 +80,5 @@ app.use(function (err, req, res, next) {
         error: {}
     });
 });
-
 
 module.exports = app;
