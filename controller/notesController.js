@@ -11,28 +11,33 @@ module.exports.changeStyle = function(req, res) {
 
 module.exports.showIndex = function(req, res) {
     res.render("index", {
-        title: "My notes"
+        title: "My notes",
+        notes: null
     });
 };
 
 module.exports.showNewNote = function(req, res) {
-    res.render("showNewNote", {style: css});
+    res.render("newNote", {
+        title: "Create note"
+    });
 };
 
 module.exports.getNotes = function(req, res) {
-        var notes = notesDAO.all(function(err, notes) {
-            note['style'] = css;
+    notesDAO.all(function (err, notes) {
             console.log(notes);
-            res.render("index", notes);
+        res.render("index", {
+            title: "My notes",
+            notes: notes
+        });
         });
 };
 
 // TODO: alles auf gleiche showNewNote rendern sinnvoll?
 
 module.exports.getNote = function(req, res) {
-    var note = notesDAO.get(req.params.id, function(err, note) {
+    notesDAO.get(req.params.id, function (err, note) {
         console.log(note);
-        res.render("showNewNote", note);
+        res.render("newNote", note);
     });
 };
 
