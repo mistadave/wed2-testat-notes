@@ -30,6 +30,11 @@ h3:after {
     float: right;
 }
 
+.flex-order {
+    display: flex;
+    flex-direction: column;
+}
+
 .inline-box {
     display: flex;
     flex-direction: row;
