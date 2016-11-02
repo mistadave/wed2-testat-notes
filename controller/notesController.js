@@ -41,13 +41,13 @@ module.exports.getNote = function(req, res) {
     });
 };
 
-module.exports.createNote = function(req, res) {
+module.exports.createNote = function (req, res, next) {
     console.log(req.body);
     console.log(req.params);
-    var note = notesDAO.add(req.body.title, req.body.description, req.body.importance, req.body.dueToDate, function(err, note) {
+    notesDAO.add(req.body.title, req.body.description, req.body.importance, req.body.dueToDate, function (err, note) {
         note['style'] = css;
         console.log(note);
-       res.render("showNewNote", note);
+        next();
     });
 };
 
