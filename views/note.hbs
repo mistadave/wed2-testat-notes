@@ -3,15 +3,19 @@
     <form>
         {{#if note}}
             <div class="">
+                <label>Status</label>
                 <input type="checkbox"><label>Finished</label>
             </div>
             <div class="">
-                {{title}}
+                <label>Titel</label>
+                <span>{{title}}</span>
             </div>
             <div class="">
-                <input type="text" value="{{description}}" readonly>
+                <label>Beschreibung</label>
+                <textarea readonly>{{description}}</textarea>
             </div>
             <div class="">
+                <label>Wichtigkeit</label>
                 {{importance}}
             </div>
             <div class="">

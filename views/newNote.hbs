@@ -1,21 +1,24 @@
 <h3>Neue TODO</h3>
 <div class="flex-order">
     <form action="/notes/create" method="post">
-        <div class="">
+        <div class="form-item">
             <label>Title</label>
             <input type="text" name="title" placeholder="Beispiel" required>
         </div>
-        <div class="">
+        <div class="form-item">
             <label>Beschreibung</label>
-            <input type="text" name="description" placeholder="Deine Notiz" required>
+            <textarea name="description" placeholder="Deine Notiz" required></textarea>
         </div>
-        <div class="">
+        <div class="form-item">
             <label>Wichtigkeit</label>
             <input type="number" name="importance" placeholder="5" min="1" max="5" required>
         </div>
-        <div class="">
+        <div class="form-item">
             <label>Fertig bis</label>
             <input type="date" name="dueToDate" required>
+        </div>
+        <div class="form-item">
+            <input type="checkbox"><label>Erledigt!</label>
         </div>
         <button class="button" type="submit">Anlegen</button>
         <button class="button" type="reset">Abbruch</button>
