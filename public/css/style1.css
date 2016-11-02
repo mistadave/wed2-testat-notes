@@ -1,5 +1,5 @@
 body {
-    padding: 50px;
+    padding: 2em;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     background: #ffffff;
 }
@@ -12,6 +12,28 @@ h3:after {
     content: ' ';
     display: block;
     border: 1px solid #adadad;
+}
+
+.container {
+
+}
+
+.navigation {
+    order: 1;
+}
+
+.notes {
+    order: 2;
+}
+
+.right {
+    float: right;
+}
+
+.inline-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .button {
