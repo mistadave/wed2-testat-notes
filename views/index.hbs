@@ -6,13 +6,16 @@
 <div class="">
     <form>
         <div class="">
-            <button type='submit' formaction="/newNote" formmethod="get" class="button">Create new Note</button>
-            <button type="submit" formaction="/changeStyle" formmethod="get" class="button">Style-Changer</button>
-            <button type="submit" formaction="/showByFinishDate" formmethod="get" class="button">By finish Date</button>
-            <button type="submit" formaction="/showByCreatedDate" formmethod="get" class="button">By created Date
+            <button class="button" type='submit' formaction="/notes/create" formmethod="get">Create new Note</button>
+            <button class="button right" type="submit" formaction="/changeStyle" formmethod="get">Style-Switcher
             </button>
-            <button type="submit" formaction="/showByImportance" formmethod="get" class="button">By Importance</button>
-            <button type="submit" fomaction="/showFinished" formmethod="get" class="button">Show finished</button>
+        </div>
+        <div class="">
+            <button class="button" type="submit" formaction="/showByFinishDate" formmethod="get">By finish Date</button>
+            <button class="button" type="submit" formaction="/showByCreatedDate" formmethod="get">By created Date
+            </button>
+            <button class="button" type="submit" formaction="/showByImportance" formmethod="get">By Importance</button>
+            <button class="button" type="submit" fomaction="/showFinished" formmethod="get">Show finished</button>
         </div>
     </form>
 </div>
@@ -23,20 +26,18 @@
         <!-- TODO: if not working and why empty already 4 iterations? -->
         {{#if this}}
             {{#each this}}
-                <div class="">
-                    <input type="checkbox"><label>Finished</label>
-                </div>
-                <div class="">
-                    {{title}}
-                </div>
-                <div class="">
-                    <input type="text" value="{{description}}" readonly>
-                </div>
-                <div class="">
-                    {{importance}}
-                </div>
-                <div class="">
-                    <button type="submit" formaction="/editNote" formmethod="post">Edit</button>
+                <div>
+                    <div class="col-md-2">
+                        <input type="checkbox"><label>Finished</label>
+                    </div>
+                    <div class="col-10">
+                        {{title}}
+                        {{importance}}
+                        <input type="text" value="{{description}}" readonly>
+                    </div>
+                    <div class="">
+                        <button class="button" type="submit" formaction="/editNote" formmethod="post">Edit</button>
+                    </div>
                 </div>
             {{/each}}
         {{else}}
