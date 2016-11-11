@@ -54,6 +54,12 @@ module.exports.createNote = function (req, res, next) {
     });
 };
 
+module.exports.updateNote = function (req, res) {
+    notesDAO.get(req.params.id, function (err, note) {
+
+    });
+};
+
 module.exports.deleteNote = function(req, res) {
     console.log(req.params);
     var note = notesDAO.delete(req.params.id, function(err, note) {

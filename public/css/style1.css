@@ -2,6 +2,11 @@ body {
     padding: 2em;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     background: #ffffff;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 a {
@@ -30,15 +35,32 @@ h3:after {
     float: right;
 }
 
-.flex-order {
-    display: flex;
-    flex-direction: column;
-}
-
 .inline-box {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    border: 1px solid #CAD0D2;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.box {
+    margin: 0 5px;
+    flex: 0 0 auto;
+    border: none;
+    border-radius: 0;
+}
+
+.box-left {
+    min-width: 80px;
+}
+
+.box-middle {
+    flex: 1 0 auto;
+}
+
+.box-right button {
+    height: 90%;
 }
 
 .button {
@@ -59,19 +81,35 @@ h3:after {
     background-color: #adadad;
 }
 
+.flex-order {
+    display: flex;
+    flex-direction: column;
+}
+
 .form-item{
+    display: flex;
+}
+
+.flex-order .form-item label {
+    flex-basis: 20%;
+    margin: 0 5px;
+}
+
+/*.flex-order .form-item input ,*/
+.flex-order .form-item input,
+.flex-order .form-item textarea {
+    flex-basis: 80%;
+}
+
+.form-item {
     margin: 5px 0;
 }
 
 .form-item label{
     width: 5em;
     text-align: right;
+    padding-right: 10px;
 }
-
-.form-item input{
-    width: 60%;
-}
-
 
 input, textarea {
     background-color: #ffffff;

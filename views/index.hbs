@@ -5,7 +5,7 @@
 </div>
     <form>
         <div class="">
-            <button class="button" type='submit' formaction="/notes/create" formmethod="get">Create new Note</button>
+            <button class="button" type='submit' formaction="/notes/new" formmethod="get">Create new Note</button>
             <button class="button right" type="submit" formaction="/changeStyle" formmethod="get">Style-Switcher
             </button>
         </div>
@@ -26,16 +26,16 @@
         {{#if notes}}
             {{#each notes}}
                 <div class="inline-box">
-                    <div class="col-md-2">
+                    <div class="box box-left">
                         <input type="checkbox"><label>Finished</label>
                     </div>
-                    <div class="col-10">
+                    <div class="box box-middle">
                         {{title}}
                         <span class="right">{{importance}}</span>
                         <input type="text" value="{{description}}" readonly>
                     </div>
-                    <div class="">
-                        <button class="button" type="submit" formaction="/editNote" formmethod="post">Edit</button>
+                    <div class="box box-right">
+                        <button class="button" type="submit" formaction="/notes/{{_id}}" formmethod="get">Edit</button>
                     </div>
                 </div>
             {{/each}}
