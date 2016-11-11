@@ -1,25 +1,40 @@
-<h3>Result</h3>
+<h3 xmlns="http://www.w3.org/1999/html">Edit note</h3>
 <div class="flex-order">
     <form>
         {{#if note}}
             <div class="">
                 <label>Status</label>
-                <input type="checkbox"><label>Finished</label>
+                {{#if note.done}}
+                    <input type="checkbox" name="done" checked="checked"><label>Finished</label>
+                {{else}}
+                    <input type="checkbox" name="done"><label>Finished</label>
+                {{/if}}
             </div>
             <div class="">
                 <label>Titel</label>
-                <span>{{title}}</span>
+                <input type="text" name="title" value="{{note.title}}">
             </div>
             <div class="">
                 <label>Beschreibung</label>
-                <textarea readonly>{{description}}</textarea>
+                <textarea name="description">{{note.description}}</textarea>
             </div>
             <div class="">
-                <label>Wichtigkeit</label>
-                {{importance}}
+                <label>Wichtigkeit: </label>
+                <select name="importance">
+                    <option selected="selected">
+                        {{note.importance}}
+                    </option>
+                </select>
+
+            </div>
+            <div>
+                <label>Due To:</label>
+                <input type="date" value="{{note.dueToDate}}">
             </div>
             <div class="">
-                <button type="submit" formaction="/editNote" formmethod="post">Edit</button>
+                <button class="button" type="submit" formaction="/notes/edit/{{note._id}}" formmethod="post">Update
+                </button>
+                <button class="button" type="reset">Reset</button>
             </div>
         {{else}}
             <div class="">No data yet</div>
