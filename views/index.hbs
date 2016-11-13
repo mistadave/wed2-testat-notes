@@ -22,7 +22,7 @@
             {{#each notes}}
                 <div class="inline-box">
                     <div class="box box-left">
-                        <input type="checkbox"><label>Finished</label>
+                        <input type="checkbox" name="done" {{#if done}}checked{{/if}}><label>Finished</label>
                     </div>
                     <div class="box box-middle">
                         {{title}}

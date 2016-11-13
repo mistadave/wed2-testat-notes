@@ -4,11 +4,7 @@
         {{#if note}}
             <div class="">
                 <label>Status</label>
-                {{#if note.done}}
-                    <input type="checkbox" name="done" checked="checked"><label>Finished</label>
-                {{else}}
-                    <input type="checkbox" name="done"><label>Finished</label>
-                {{/if}}
+                <input type="checkbox" name="done" {{#if note.done}}checked{{/if}}><label>Finished</label>
             </div>
             <div class="">
                 <label>Titel</label>
