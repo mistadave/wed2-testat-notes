@@ -6,8 +6,8 @@ function sortNotes(req, res, next) {
     } else {
         switch(req.params.name) {
             case 'dueToDate':
-                console.log("finishDate");
-                req.session.sort = 'finishDate';
+                console.log("dueToDate");
+                req.session.sort = 'dueToDate';
                 break;
             case 'addDate':
                 console.log("createdDate");

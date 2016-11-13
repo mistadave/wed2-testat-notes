@@ -53,21 +53,21 @@ function publicGet(id, callback) {
 
 function publicAll(sorting, callback) {
     // TODO: problem with string conversion sorting, does not work as variable passing
-    console.log("publicAll sort: " + sorting);
+    console.log("publicAll sorting outside: " + sorting);
     console.log("typeof: " + typeof(sorting));
-    if(sorting == "done") {
+    if(sorting === "done") {
         db.find({"done": true}, function(err, doc) {
            callback(err, doc);
         });
-    } else if(sorting == "dueToDate") {
+    } else if(sorting === "dueToDate") {
         db.find({}).sort({"dueToDate": 1}).exec(function(err,doc) {
             callback(err,doc);
         });
-    } else if(sorting == "addDate") {
+    } else if(sorting === "addDate") {
         db.find({}).sort({"addDate": 1}).exec(function(err,doc) {
             callback(err,doc);
         });
-    } else if(sorting == "importance") {
+    } else if(sorting === "importance") {
         db.find({}).sort({"importance": 1}).exec(function(err,doc) {
             callback(err,doc);
         });
