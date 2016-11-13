@@ -1,11 +1,5 @@
 var notesDAO = require("../services/notesDAO.js");
 
-module.exports.changeStyle = function(req, res) {
-    res.render("index", {
-        style: req.session.style
-    });
-};
-
 module.exports.showIndex = function(req, res) {
     res.render("index", {
         title: "My notes",
@@ -31,8 +25,6 @@ module.exports.getNotes = function(req, res) {
         });
     });
 };
-
-// TODO: alles auf gleiche showNewNote rendern sinnvoll?
 
 module.exports.getNote = function(req, res) {
     notesDAO.get(req.params.id, function (err, note) {
@@ -78,6 +70,7 @@ module.exports.deleteNote = function(req, res) {
  * sorting routes
  */
 // TODO: sort as requested and send notes back
+/*
 module.exports.showByFinishDate = function(req, res) {
     var notes = notesDAO.all(function(err, notes) {
         notes['style'] = css;
@@ -107,5 +100,16 @@ module.exports.showFinished = function(req, res) {
         notes['style'] = css;
         console.log(notes);
         res.render("index", notes);
+    });
+};
+*/
+
+module.exports.sortedNotes = function(req, res) {
+    // TODO: depending on req.session.sort, we need to sort and give sorted notes back
+    var notes = notesDAO.all(function(err, notes) {
+        res.render("index", {
+            style: req.session.style,
+            notes: notes
+        });
     });
 };
