@@ -1,17 +1,22 @@
 var Datastore = require('nedb');
 var db = new Datastore({ filename: 'data/notes.db', autoload: true });
 
-function Note(title, description, importance, dueToDate) {
+function Note(title, description, importance, dueToDate, done) {
     this.title = title;
     this.description = description;
     this.importance = importance;
     this.addDate = JSON.stringify(new Date());
     this.dueToDate = dueToDate;
-    this.done = false;
+    this.done = done;
 }
 
-function publicAddNote(title, description, importance, dueToDate, callback) {
-    var note = new Note(title, description, importance, dueToDate);
+function publicAddNote(title, description, importance, dueToDate, done, callback) {
+    if(typeof done === 'undefined') {
+        done = false;
+    } else {
+        done = true;
+    }
+    var note = new Note(title, description, importance, dueToDate, done);
     db.insert(note, function (err, newDoc) {
         if (callback) {
             callback(err, newDoc);
@@ -20,7 +25,7 @@ function publicAddNote(title, description, importance, dueToDate, callback) {
 }
 
 function publicUpdate(id, title, description, importance, dueToDate, done, callback) {
-    console.log("udpate");
+    console.log("update");
     db.update({_id: id}, {$set: {"title": title, "description": description, "importance": importance, "dueToDate": dueToDate, "done": done}}, {}, function(err, doc) {
         publicGet(id, callback);
     });
@@ -46,10 +51,32 @@ function publicGet(id, callback) {
     });
 }
 
-function publicAll(callback) {
-    db.find({}, function (err, docs) {
-        callback(err, docs);
-    });
+function publicAll(sorting, callback) {
+    // TODO: problem with string conversion sorting, does not work as variable passing
+    console.log("publicAll sort: " + sorting);
+    console.log("typeof: " + typeof(sorting));
+    if(sorting == "done") {
+        db.find({"done": true}, function(err, doc) {
+           callback(err, doc);
+        });
+    } else if(sorting == "dueToDate") {
+        db.find({}).sort({"dueToDate": 1}).exec(function(err,doc) {
+            callback(err,doc);
+        });
+    } else if(sorting == "addDate") {
+        db.find({}).sort({"addDate": 1}).exec(function(err,doc) {
+            callback(err,doc);
+        });
+    } else if(sorting == "importance") {
+        db.find({}).sort({"importance": 1}).exec(function(err,doc) {
+            callback(err,doc);
+        });
+    } else {
+        db.find({}).sort({}).exec(function(err,doc) {
+            callback(err,doc);
+        });
+    }
+
 }
 
 module.exports = {add: publicAddNote, stateDone: publicSetDone, delete: publicDelete, get: publicGet, update: publicUpdate, all: publicAll};

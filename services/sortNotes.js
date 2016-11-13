@@ -1,25 +1,29 @@
 function sortNotes(req, res, next) {
     console.log("session: " + req.session);
-    //console.log(req);
-    //req.session.style = req.session.style == 'style2.css' ? 'style1.css' : 'style2.css';
-    if(!req.session.sort) {
-        req.session.sort = "default";
+    if(!req.session.sort && !req.params.name) {
+        console.log("_id");
+        req.session.sort = "_id";
     } else {
-        switch(req.param['name']) {
-            case 'finishDate':
+        switch(req.params.name) {
+            case 'dueToDate':
+                console.log("finishDate");
                 req.session.sort = 'finishDate';
                 break;
-            case 'createdDate':
+            case 'addDate':
+                console.log("createdDate");
                 req.session.sort = 'createdDate';
                 break;
             case 'importance':
+                console.log("importance");
                 req.session.sort = 'importance';
                 break;
-            case 'finished':
-                req.session.sort = 'finished';
+            case 'done':
+                console.log("done");
+                req.session.sort = 'done';
                 break;
             default:
-                req.session.sort = 'default';
+                console.log("_id");
+                req.session.sort = '_id';
         }
     }
     console.log("req.session.sort: " + req.session.sort);

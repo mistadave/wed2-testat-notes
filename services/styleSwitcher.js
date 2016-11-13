@@ -1,7 +1,5 @@
 function changeStyle(req, res, next) {
     console.log("session: " + req.session);
-    console.log(req);
-    //req.session.style = req.session.style == 'style2.css' ? 'style1.css' : 'style2.css';
     if(!req.session.style) {
         req.session.style = "style1.css";
     } else if(req.url == '/changeStyle') {

@@ -16,7 +16,8 @@ module.exports.showNewNote = function(req, res) {
 };
 
 module.exports.getNotes = function(req, res) {
-    notesDAO.all(function (err, notes) {
+    console.log("getNotes: " + req.session.sort);
+    notesDAO.all(req.session.sort, function (err, notes) {
             console.log(notes);
         res.render("index", {
             title: "My notes",
@@ -40,7 +41,7 @@ module.exports.getNote = function(req, res) {
 module.exports.createNote = function (req, res, next) {
     console.log(req.body);
     console.log(req.params);
-    notesDAO.add(req.body.title, req.body.description, req.body.importance, req.body.dueToDate, function (err, note) {
+    notesDAO.add(req.body.title, req.body.description, req.body.importance, req.body.dueToDate, req.body.done, function (err, note) {
         next();
     });
 };
@@ -106,7 +107,8 @@ module.exports.showFinished = function(req, res) {
 
 module.exports.sortedNotes = function(req, res) {
     // TODO: depending on req.session.sort, we need to sort and give sorted notes back
-    var notes = notesDAO.all(function(err, notes) {
+    console.log("sortedNotes sort: " + req.session.sort);
+    var notes = notesDAO.all(req.session.sort, function(err, notes) {
         res.render("index", {
             style: req.session.style,
             notes: notes

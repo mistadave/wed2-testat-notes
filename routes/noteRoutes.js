@@ -3,7 +3,7 @@ var router = express.Router();
 var notes = require('../controller/notesController.js');
 var style = require('../services/styleSwitcher');
 var sort = require('../services/sortNotes.js');
-router.get("/", style.changeStyle, notes.getNotes);
+router.get("/", sort.sortNotes, style.changeStyle, notes.getNotes);
 router.get("/changeStyle", style.changeStyle, notes.getNotes);
 router.get("/notes/new", notes.showNewNote);
 router.get("/notes", notes.getNotes); //get all the notes
@@ -24,6 +24,6 @@ router.get('/showByCreatedDate', notes.showByCreatedDate);
 router.get('/showByImportance', notes.showByImportance);
 router.get('/showFinished', notes.showFinished);
 */
-router.get('/sortNotes', sort.sortNotes, notes.sortedNotes);
+router.get('/sortNotes/:name', sort.sortNotes, notes.sortedNotes);
 
 module.exports = router;
