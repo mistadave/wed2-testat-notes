@@ -19,9 +19,9 @@ function publicAddNote(title, description, importance, dueToDate, callback) {
     });
 }
 
-function publicUpdate(id, title, description, importance, dueToDate, callback) {
+function publicUpdate(id, title, description, importance, dueToDate, done, callback) {
     console.log("udpate");
-    db.update({_id: id}, {$set: {"title": title, "description": description, "importance": importance, "dueToDate": dueToDate}}, {}, function(err, doc) {
+    db.update({_id: id}, {$set: {"title": title, "description": description, "importance": importance, "dueToDate": dueToDate, "done": done}}, {}, function(err, doc) {
         publicGet(id, callback);
     });
 }

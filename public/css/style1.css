@@ -1,6 +1,7 @@
 body {
     padding: 2em;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    color: #000000;
     background: #ffffff;
     box-sizing: border-box;
 }
@@ -126,4 +127,9 @@ input[type="checkbox"] {
     margin:10px 0;
     vertical-align:middle;
     cursor: hand;
+}
+
+.nothing {
+    background-color: #086c9e;
+
 }

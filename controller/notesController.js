@@ -1,24 +1,23 @@
 var notesDAO = require("../services/notesDAO.js");
 
-var styleChanger = false;
-var css = "style1.css";
-
 module.exports.changeStyle = function(req, res) {
-    styleChanger = !styleChanger;
-    css = styleChanger ? "style2.css" : "style1.css";
-    res.render("index", {style: css});
+    res.render("index", {
+        style: req.session.style
+    });
 };
 
 module.exports.showIndex = function(req, res) {
     res.render("index", {
         title: "My notes",
+        style: req.session.style,
         notes: null
     });
 };
 
 module.exports.showNewNote = function(req, res) {
     res.render("newNote", {
-        title: "Create note"
+        title: "Create note",
+        style: req.session.style
     });
 };
 
@@ -27,6 +26,7 @@ module.exports.getNotes = function(req, res) {
             console.log(notes);
         res.render("index", {
             title: "My notes",
+            style: req.session.style,
             notes: notes
         });
     });
@@ -39,6 +39,7 @@ module.exports.getNote = function(req, res) {
         console.log("editNote: " + note);
         res.render("editNote", {
             title: "editNote " + note.title,
+            style: req.session.style,
             note: note
         });
     });
@@ -48,18 +49,17 @@ module.exports.createNote = function (req, res, next) {
     console.log(req.body);
     console.log(req.params);
     notesDAO.add(req.body.title, req.body.description, req.body.importance, req.body.dueToDate, function (err, note) {
-        note['style'] = css;
-        console.log(note);
         next();
     });
 };
 
 module.exports.updateNote = function (req, res) {
     console.log("update test");
-    notesDAO.update(req.params.id, req.body.title, req.body.description, req.body.importance, req.body.dueToDate, function (err, note) {
+    notesDAO.update(req.params.id, req.body.title, req.body.description, req.body.importance, req.body.dueToDate, req.body.done, function (err, note) {
         console.log("updateNote: " + note);
         res.render("editNote", {
             title: "editNote " + note.title,
+            style: req.session.style,
             note: note
         });
     });
@@ -68,9 +68,9 @@ module.exports.updateNote = function (req, res) {
 module.exports.deleteNote = function(req, res) {
     console.log(req.params);
     var note = notesDAO.delete(req.params.id, function(err, note) {
-        note['style'] = css;
-        console.log(note);
-        res.render("showNewNote", note);
+        res.render("showNewNote", {
+            note: note,
+            style: req.session.style});
     });
 };
 

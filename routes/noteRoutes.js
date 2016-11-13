@@ -3,7 +3,7 @@ var router = express.Router();
 var notes = require('../controller/notesController.js');
 var style = require('../services/styleSwitcher');
 router.get("/", style.changeStyle, notes.getNotes);
-router.get("/changeStyle", notes.changeStyle);
+router.get("/changeStyle", style.changeStyle, notes.changeStyle, notes.getNotes);
 router.get("/notes/new", notes.showNewNote);
 router.get("/notes", notes.getNotes); //get all the notes
 router.get("/notes/:id", notes.getNote); //get one note by id

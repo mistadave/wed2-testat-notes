@@ -1,8 +1,5 @@
 <div class="navigation">
 <h3>Willkommen! Zu der besten Note App auf der Welt! Juhuu</h3>
-<div class="images">
-    <img src='/images/note.jpg'>
-</div>
     <form>
         <div class="">
             <button class="button" type='submit' formaction="/notes/new" formmethod="get">Create new Note</button>
@@ -22,7 +19,6 @@
 <div class="notes">
 <h3>Notes</h3>
     <form>
-        <!-- TODO: if not working and why empty already 4 iterations? -->
         {{#if notes}}
             {{#each notes}}
                 <div class="inline-box">
@@ -40,7 +36,7 @@
                 </div>
             {{/each}}
         {{else}}
-            <div class="">No data yet</div>
+            <div class="nothing">No data yet</div>
         {{/if}}
     </form>
 </div>

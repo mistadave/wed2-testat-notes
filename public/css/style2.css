@@ -1,15 +1,17 @@
 body {
-    padding: 50px;
+    padding: 2em;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    color: #ffffff;
     background: #000000;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 a {
     color: #00B7FF;
-}
-
-h3 {
-    color: #ffffff;
 }
 
 h3:after {
@@ -18,19 +20,116 @@ h3:after {
     border: 1px solid #adadad;
 }
 
-.button {
-    background-color: #00069e;
+.container {
+
+}
+
+.navigation {
+    order: 1;
+}
+
+.notes {
+    order: 2;
+}
+
+.right {
+    float: right;
+}
+
+.inline-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px solid #CAD0D2;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.box {
+    margin: 0 5px;
+    flex: 0 0 auto;
     border: none;
-    border-radius: 8px;
-    color: #ffffff;
-    padding: 5px 5px;
+    border-radius: 0;
+}
+
+.box-left {
+    min-width: 80px;
+}
+
+.box-middle {
+    flex: 1 0 auto;
+}
+
+.box-right button {
+    height: 90%;
+}
+
+.button {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    color: #000000;
+    padding: 5px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    margin: 2px 2px;
+    margin: 2px;
     cursor: pointer;
+    min-width: 150px;
 }
 
-input {
-    background-color: #00069e;
+.button:hover {
+    background-color: #adadad;
+}
+
+.flex-order {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-item{
+    display: flex;
+}
+
+.flex-order .form-item label {
+    flex-basis: 20%;
+    margin: 0 5px;
+}
+
+/*.flex-order .form-item input ,*/
+.flex-order .form-item input,
+.flex-order .form-item textarea {
+    flex-basis: 80%;
+}
+
+.form-item {
+    margin: 5px 0;
+}
+
+.form-item label{
+    width: 5em;
+    text-align: right;
+    padding-right: 10px;
+}
+
+input, textarea {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+input[type="checkbox"] {
+    display: inline-block;
+    width: 18px;
+    height: 16px;
+    margin:10px 0;
+    vertical-align:middle;
+    cursor: hand;
+}
+
+.nothing {
+    background-color: #086c9e;
+
 }
