@@ -29,16 +29,16 @@ module.exports.getNotes = function(req, res) {
             title: "My notes",
             notes: notes
         });
-        });
+    });
 };
 
 // TODO: alles auf gleiche showNewNote rendern sinnvoll?
 
 module.exports.getNote = function(req, res) {
     notesDAO.get(req.params.id, function (err, note) {
-        console.log("note: " + note);
-        res.render("note", {
-            title: "Note " + note.title,
+        console.log("editNote: " + note);
+        res.render("editNote", {
+            title: "editNote " + note.title,
             note: note
         });
     });
@@ -55,8 +55,13 @@ module.exports.createNote = function (req, res, next) {
 };
 
 module.exports.updateNote = function (req, res) {
-    notesDAO.get(req.params.id, function (err, note) {
-
+    console.log("update test");
+    notesDAO.update(req.params.id, req.body.title, req.body.description, req.body.importance, req.body.dueToDate, function (err, note) {
+        console.log("updateNote: " + note);
+        res.render("editNote", {
+            title: "editNote " + note.title,
+            note: note
+        });
     });
 };
 

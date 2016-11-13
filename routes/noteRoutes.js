@@ -8,8 +8,8 @@ router.get("/notes/new", notes.showNewNote);
 router.get("/notes", notes.getNotes); //get all the notes
 router.get("/notes/:id", notes.getNote); //get one note by id
 // TODO: POST: sent as JSON object in body works! Tested with POSTMAN.
-router.post("/notes/create", notes.createNote, notes.getNotes); //insert new notee
-router.get("/notes/edit/:id", notes.updateNote);
+router.post("/notes/create", notes.createNote, notes.getNotes); //insert new note
+router.post("/notes/edit/:id", notes.updateNote); //update note by id
 router.delete("/notes/:id", notes.deleteNote); //delete a note by id
 
 

@@ -1,5 +1,5 @@
 var Datastore = require('nedb');
-var db = new Datastore({ filename: '../data/notes.db', autoload: true });
+var db = new Datastore({ filename: 'data/notes.db', autoload: true });
 
 function Note(title, description, importance, dueToDate) {
     this.title = title;
@@ -16,6 +16,13 @@ function publicAddNote(title, description, importance, dueToDate, callback) {
         if (callback) {
             callback(err, newDoc);
         }
+    });
+}
+
+function publicUpdate(id, title, description, importance, dueToDate, callback) {
+    console.log("udpate");
+    db.update({_id: id}, {$set: {"title": title, "description": description, "importance": importance, "dueToDate": dueToDate}}, {}, function(err, doc) {
+        publicGet(id, callback);
     });
 }
 
@@ -45,4 +52,4 @@ function publicAll(callback) {
     });
 }
 
-module.exports = {add: publicAddNote, stateDone: publicSetDone, delete: publicDelete, get: publicGet, all: publicAll};
+module.exports = {add: publicAddNote, stateDone: publicSetDone, delete: publicDelete, get: publicGet, update: publicUpdate, all: publicAll};
