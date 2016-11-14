@@ -2,7 +2,7 @@ body {
     padding: 2em;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     color: #000000;
-    background: #ffffff;
+    background: #00B100;
     box-sizing: border-box;
 }
 
@@ -17,7 +17,7 @@ a {
 h3:after {
     content: ' ';
     display: block;
-    border: 1px solid #adadad;
+    border: 1px solid #006D00;
 }
 
 .container {
@@ -65,8 +65,8 @@ h3:after {
 }
 
 .button {
-    background-color: #ffffff;
-    border: 1px solid #000000;
+    background-color: #00F600;
+    border: 1px solid #006D00;
     border-radius: 5px;
     color: #000000;
     padding: 5px;
@@ -79,7 +79,7 @@ h3:after {
 }
 
 .button:hover {
-    background-color: #adadad;
+    background-color: #008a00;
 }
 
 .flex-order {
