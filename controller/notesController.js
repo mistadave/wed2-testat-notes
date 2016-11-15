@@ -56,11 +56,10 @@ module.exports.updateNote = function (req, res) {
 };
 
 module.exports.deleteNote = function(req, res) {
+    console.log("delete note");
     console.log(req.params);
     notesDAO.delete(req.params.id, function(err, note) {
-        res.render("showNewNote", {
-            note: note,
-            style: req.session.style});
+        res.redirect("/");
     });
 };
 
