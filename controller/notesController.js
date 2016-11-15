@@ -18,7 +18,7 @@ module.exports.showNewNote = function(req, res) {
 
 module.exports.getNotes = function(req, res) {
     console.log("getNotes: " + req.session.sort);
-    notesDAO.all(req.session.sort, function (err, notes) {
+    notesDAO.all(req.session.sort, req.session.sortOrder, function (err, notes) {
             console.log(notes);
         res.render("index", {
             title: "My notes",
@@ -69,47 +69,12 @@ module.exports.deleteNote = function(req, res) {
 };
 
 /*
- * sorting routes
+ * sorting route
  */
-// TODO: sort as requested and send notes back
-/*
-module.exports.showByFinishDate = function(req, res) {
-    var notes = notesDAO.all(function(err, notes) {
-        notes['style'] = css;
-        console.log(notes);
-        res.render("index", notes);
-    });
-};
-
-module.exports.showByCreatedDate = function(req, res) {
-    var notes = notesDAO.all(function(err, notes) {
-        notes['style'] = css;
-        console.log(notes);
-        res.render("index", notes);
-    });
-};
-
-module.exports.showByImportance = function(req, res) {
-    var notes = notesDAO.all(function(err, notes) {
-        notes['style'] = css;
-        console.log(notes);
-        res.render("index", notes);
-    });
-};
-
-module.exports.showFinished = function(req, res) {
-    var notes = notesDAO.all(function(err, notes) {
-        notes['style'] = css;
-        console.log(notes);
-        res.render("index", notes);
-    });
-};
-*/
-
 module.exports.sortedNotes = function(req, res) {
     // TODO: depending on req.session.sort, we need to sort and give sorted notes back
     console.log("sortedNotes sort: " + req.session.sort);
-    var notes = notesDAO.all(req.session.sort, function(err, notes) {
+    var notes = notesDAO.all(req.session.sort, req.session.sortOrder, function(err, notes) {
         res.render("index", {
             style: style.getStyle(req, res),
             notes: notes

@@ -56,24 +56,24 @@ function publicGet(id, callback) {
     });
 }
 
-function publicAll(sorting, callback) {
+function publicAll(sorting, sortingOrder, callback) {
     // TODO: problem with string conversion sorting, does not work as variable passing
     console.log("publicAll sorting outside: " + sorting);
     console.log("typeof: " + typeof(sorting));
     if(sorting === "done") {
-        db.find({"done": true}, function(err, doc) {
+        db.find({"done": true}).sort({"_id" : sortingOrder}).exec(function(err,doc) {
            callback(err, doc);
         });
     } else if(sorting === "dueToDate") {
-        db.find({}).sort({"dueToDate": 1}).exec(function(err,doc) {
+        db.find({}).sort({"dueToDate": sortingOrder}).exec(function(err,doc) {
             callback(err,doc);
         });
     } else if(sorting === "addDate") {
-        db.find({}).sort({"addDate": 1}).exec(function(err,doc) {
+        db.find({}).sort({"addDate": sortingOrder}).exec(function(err,doc) {
             callback(err,doc);
         });
     } else if(sorting === "importance") {
-        db.find({}).sort({"importance": 1}).exec(function(err,doc) {
+        db.find({}).sort({"importance": sortingOrder}).exec(function(err,doc) {
             callback(err,doc);
         });
     } else {
