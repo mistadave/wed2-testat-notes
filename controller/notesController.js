@@ -51,11 +51,7 @@ module.exports.updateNote = function (req, res) {
     console.log("update test");
     notesDAO.update(req.params.id, req.body.title, req.body.description, req.body.importance, req.body.dueToDate, req.body.done, function (err, note) {
         console.log("updateNote: " + note);
-        res.render("editNote", {
-            title: "editNote " + note.title,
-            style: style.getStyle(req, res),
-            note: note
-        });
+        res.redirect("/");
     });
 };
 
