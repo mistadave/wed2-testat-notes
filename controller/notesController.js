@@ -61,20 +61,16 @@ module.exports.updateNote = function (req, res) {
 
 module.exports.deleteNote = function(req, res) {
     console.log(req.params);
-    var note = notesDAO.delete(req.params.id, function(err, note) {
+    notesDAO.delete(req.params.id, function(err, note) {
         res.render("showNewNote", {
             note: note,
             style: req.session.style});
     });
 };
 
-/*
- * sorting route
- */
 module.exports.sortedNotes = function(req, res) {
-    // TODO: depending on req.session.sort, we need to sort and give sorted notes back
     console.log("sortedNotes sort: " + req.session.sort);
-    var notes = notesDAO.all(req.session.sort, req.session.sortOrder, function(err, notes) {
+    notesDAO.all(req.session.sort, req.session.sortOrder, function(err, notes) {
         res.render("index", {
             style: style.getStyle(req, res),
             notes: notes

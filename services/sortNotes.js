@@ -7,6 +7,8 @@ function sortNotes(req, res, next) {
         console.log("no sortOrder session exist");
         sortOrder = 1;
         req.session.sortOrder = sortOrder;
+    } else {
+        sortOrder = req.session.sortOrder;
     }
     if(req.params.name === req.session.sort) {
         console.log("test previous session with new one, if so reverse sortOrder");
@@ -14,12 +16,12 @@ function sortNotes(req, res, next) {
         sortOrder = req.session.sortOrder === 1 ? -1 : 1;
         console.log("After sortOrder: " + sortOrder);
         req.session.sortOrder = sortOrder;
-    } else {
+    } else if(req.params.name  === "/sortNotes/dueToDate" || req.params.name === "/sortNotes/addDate" || req.params.name === "/sortNotes/importance" || req.params.name === "/sortNotes/done") {
         console.log("if req.params.name and req.session.sort not the same, back to standard");
         req.session.sortOrder = 1;
     }
     if(req.params.name) {
-        console.log("if req.params.name");
+        console.log("if req.params.name not one of the sorting");
         sortAlgo = req.params.name;
         req.session.sort = sortAlgo;
     }
