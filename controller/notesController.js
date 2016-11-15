@@ -1,9 +1,10 @@
 var notesDAO = require("../services/notesDAO.js");
+var style = require("../services/styleSwitcher");
 
 module.exports.showIndex = function(req, res) {
     res.render("index", {
         title: "My notes",
-        style: req.session.style,
+        style: style.getStyle(req, res),
         notes: null
     });
 };
@@ -21,7 +22,7 @@ module.exports.getNotes = function(req, res) {
             console.log(notes);
         res.render("index", {
             title: "My notes",
-            style: req.session.style,
+            style: style.getStyle(req, res),
             notes: notes
         });
     });
@@ -32,7 +33,7 @@ module.exports.getNote = function(req, res) {
         console.log("editNote: " + note);
         res.render("editNote", {
             title: "editNote " + note.title,
-            style: req.session.style,
+            style: style.getStyle(req, res),
             note: note
         });
     });
@@ -52,7 +53,7 @@ module.exports.updateNote = function (req, res) {
         console.log("updateNote: " + note);
         res.render("editNote", {
             title: "editNote " + note.title,
-            style: req.session.style,
+            style: style.getStyle(req, res),
             note: note
         });
     });
@@ -110,7 +111,7 @@ module.exports.sortedNotes = function(req, res) {
     console.log("sortedNotes sort: " + req.session.sort);
     var notes = notesDAO.all(req.session.sort, function(err, notes) {
         res.render("index", {
-            style: req.session.style,
+            style: style.getStyle(req, res),
             notes: notes
         });
     });
