@@ -26,6 +26,11 @@ function publicAddNote(title, description, importance, dueToDate, done, callback
 
 function publicUpdate(id, title, description, importance, dueToDate, done, callback) {
     console.log("update");
+    if(done === "on") {
+        done = true;
+    } else {
+        done = false;
+    }
     db.update({_id: id}, {$set: {"title": title, "description": description, "importance": importance, "dueToDate": dueToDate, "done": done}}, {}, function(err, doc) {
         publicGet(id, callback);
     });
