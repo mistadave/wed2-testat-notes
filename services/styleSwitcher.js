@@ -3,7 +3,7 @@ function changeStyle(req, res) {
     if(!req.session.style) {
         console.log("no css set yet");
         req.session.style = "default.css";
-    } else if (req.url == '/changeStyle?') {
+    } else {
         console.log("change css");
         switch(req.session.style) {
             case 'default.css':
