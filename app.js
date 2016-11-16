@@ -20,6 +20,20 @@ var viewsDir = relative('views');
 
 app.use(express.static(relative('public')));
 // view engine setup
+hbs.registerHelper('dropimportance', function (context, options) {
+    var ret = "";
+    for (var i = 1; i <= 5; i++) {
+        var option = "<option ";
+        if (parseInt(context) === i) {
+            option = option + "selected >";
+        } else {
+            option = option + ">";
+        }
+        option = option + i + "<//option>";
+        ret = ret + option;
+    }
+    return ret;
+});
 app.engine('hbs', hbs.express4({
     defaultLayout: relative('views/layouts/default.hbs')
 }));
