@@ -20,6 +20,13 @@ var viewsDir = relative('views');
 
 app.use(express.static(relative('public')));
 // view engine setup
+hbs.registerHelper('stars', function (context, options) {
+    var ret = "";
+    for (var i = 1; i <= parseInt(context); i++) {
+        ret = ret + "&#9733; ";
+    }
+    return ret;
+});
 hbs.registerHelper('dropimportance', function (context, options) {
     var ret = "";
     for (var i = 1; i <= 5; i++) {
