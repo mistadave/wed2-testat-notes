@@ -23,10 +23,16 @@ module.exports.getNotes = function(req, res) {
         res.render("index", {
             title: "My notes",
             style: style.getStyle(req, res),
-            notes: notes
+            notes: notes,
+            done: sessionDone(req)
         });
     });
 };
+
+function sessionDone(req) {
+    "use strict";
+    return req.session.sortOrder === 1 ? true : false;
+}
 
 module.exports.getNote = function(req, res) {
     notesDAO.get(req.params.id, function (err, note) {
@@ -55,20 +61,13 @@ module.exports.updateNote = function (req, res) {
     });
 };
 
-module.exports.deleteNote = function(req, res) {
-    console.log("delete note");
-    console.log(req.params);
-    notesDAO.delete(req.params.id, function(err, note) {
-        res.redirect("/");
-    });
-};
-
 module.exports.sortedNotes = function(req, res) {
     console.log("sortedNotes sort: " + req.session.sort);
     notesDAO.all(req.session.sort, req.session.sortOrder, function(err, notes) {
         res.render("index", {
             style: style.getStyle(req, res),
-            notes: notes
+            notes: notes,
+            done: sessionDone(req)
         });
     });
 };
