@@ -31,7 +31,7 @@ module.exports.getNotes = function(req, res) {
 
 function sessionDone(req) {
     "use strict";
-    return req.session.sortOrder === 1 ? true : false;
+    return (req.session.sortOrder === 1 && req.session.sort === 'finished') ? true : false;
 }
 
 module.exports.getNote = function(req, res) {
