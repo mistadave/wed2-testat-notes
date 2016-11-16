@@ -62,12 +62,5 @@ module.exports.updateNote = function (req, res) {
 };
 
 module.exports.sortedNotes = function(req, res) {
-    console.log("sortedNotes sort: " + req.session.sort);
-    notesDAO.all(req.session.sort, req.session.sortOrder, function(err, notes) {
-        res.render("index", {
-            style: style.getStyle(req, res),
-            notes: notes,
-            done: sessionDone(req)
-        });
-    });
+    res.redirect("/");
 };
