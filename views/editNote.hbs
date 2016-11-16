@@ -17,9 +17,12 @@
             <div class="">
                 <label>Wichtigkeit: </label>
                 <select name="importance">
-                    <option selected="selected">
+                    {{#dropimportance note.importance}}
+
+                    {{/dropimportance}}
+                    <!--<option selected="selected">
                         {{note.importance}}
-                    </option>
+                    </option>-->
                 </select>
 
             </div>
