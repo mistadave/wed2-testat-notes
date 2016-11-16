@@ -28,7 +28,7 @@
                     <div class="box box-middle">
                         <span>{{title}}</span>
                         <span class="right">{{#stars importance}}{{/stars}}</span>
-                        <input type="text" value="{{description}}" readonly>
+                        <textarea type="text" readonly>{{description}}</textarea>
                     </div>
                     <div class="box box-right">
                         <button class="button" type="submit" formaction="/notes/{{_id}}" formmethod="get">Edit</button>
