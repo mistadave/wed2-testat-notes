@@ -19,11 +19,6 @@ h3:after {
     display: block;
     border: 1px solid #006D00;
 }
-
-.container {
-
-}
-
 .navigation {
     order: 1;
 }
@@ -157,6 +152,10 @@ input[type="checkbox"] {
 
     .form-button {
         margin-left: 0;
+    }
+
+    .form-button .right {
+        float: left;
     }
 
     .inline-box {
