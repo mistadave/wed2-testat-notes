@@ -17,9 +17,7 @@ module.exports.showNewNote = function(req, res) {
 };
 
 module.exports.getNotes = function(req, res) {
-    console.log("getNotes: " + req.session.sort);
     notesDAO.all(req.session.sort, req.session.sortOrder, function (err, notes) {
-            console.log(notes);
         res.render("index", {
             title: "My notes",
             style: style.getStyle(req, res),
@@ -31,12 +29,11 @@ module.exports.getNotes = function(req, res) {
 
 function sessionDone(req) {
     "use strict";
-    return (req.session.sortOrder === 1 && req.session.sort === 'finished') ? true : false;
+    return (req.session.sortOrder === 1 && req.session.sort === 'done') ? true : false;
 }
 
 module.exports.getNote = function(req, res) {
     notesDAO.get(req.params.id, function (err, note) {
-        console.log("editNote: " + note);
         res.render("editNote", {
             title: "editNote " + note.title,
             style: style.getStyle(req, res),
@@ -46,17 +43,13 @@ module.exports.getNote = function(req, res) {
 };
 
 module.exports.createNote = function (req, res) {
-    console.log(req.body);
-    console.log(req.params);
     notesDAO.add(req.body.title, req.body.description, req.body.importance, req.body.dueToDate, req.body.done, function (err, note) {
         res.redirect("/");
     });
 };
 
 module.exports.updateNote = function (req, res) {
-    console.log("update test");
     notesDAO.update(req.params.id, req.body.title, req.body.description, req.body.importance, req.body.dueToDate, req.body.done, function (err, note) {
-        console.log("updateNote: " + note);
         res.redirect("/");
     });
 };

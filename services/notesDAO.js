@@ -11,11 +11,7 @@ function Note(title, description, importance, dueToDate, done) {
 }
 
 function publicAddNote(title, description, importance, dueToDate, done, callback) {
-    if(typeof done === 'undefined') {
-        done = false;
-    } else {
-        done = true;
-    }
+    done = (typeof done !== 'undefined');
     var note = new Note(title, description, importance, dueToDate, done);
     db.insert(note, function (err, newDoc) {
         if (callback) {
@@ -25,12 +21,7 @@ function publicAddNote(title, description, importance, dueToDate, done, callback
 }
 
 function publicUpdate(id, title, description, importance, dueToDate, done, callback) {
-    console.log("update");
-    if(done === "on") {
-        done = true;
-    } else {
-        done = false;
-    }
+    done = (done === 'on');
     db.update({_id: id}, {$set: {"title": title, "description": description, "importance": importance, "dueToDate": dueToDate, "done": done}}, {}, function(err, doc) {
         publicGet(id, callback);
     });
