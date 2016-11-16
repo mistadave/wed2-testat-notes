@@ -61,9 +61,15 @@ function publicAll(sorting, sortingOrder, callback) {
     console.log("publicAll sorting outside: " + sorting);
     console.log("typeof: " + typeof(sorting));
     if(sorting === "done") {
-        db.find({"done": true}).sort({"_id" : sortingOrder}).exec(function(err,doc) {
-           callback(err, doc);
-        });
+        if(sortingOrder === 1) {
+            db.find({"done": true}).sort({}).exec(function(err,doc) {
+                callback(err, doc);
+            });
+        } else if(sortingOrder === -1) {
+            db.find({}).sort({}).exec(function(err,doc) {
+                callback(err, doc);
+            });
+        }
     } else if(sorting === "dueToDate") {
         db.find({}).sort({"dueToDate": sortingOrder}).exec(function(err,doc) {
             callback(err,doc);

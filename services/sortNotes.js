@@ -40,7 +40,7 @@ function sortNotes(req, res, next) {
             break;
         case 'addDate':
             console.log("createdDate");
-            req.session.sort = 'createdDate';
+            req.session.sort = 'addDate';
             break;
         case 'importance':
             console.log("importance");
