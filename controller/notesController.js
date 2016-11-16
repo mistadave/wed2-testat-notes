@@ -39,11 +39,11 @@ module.exports.getNote = function(req, res) {
     });
 };
 
-module.exports.createNote = function (req, res, next) {
+module.exports.createNote = function (req, res) {
     console.log(req.body);
     console.log(req.params);
     notesDAO.add(req.body.title, req.body.description, req.body.importance, req.body.dueToDate, req.body.done, function (err, note) {
-        next();
+        res.redirect("/");
     });
 };
 
