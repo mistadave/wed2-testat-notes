@@ -36,3 +36,13 @@
 
 Jede Gruppe hat die Möglichkeit für eine Nachkorrektur. Diese erfolgt eine Woche später. Eine zweite Nachkorrektur wird nicht akzeptiert.
 Nachkorrekturen müssen entweder nochmals präsentiert werden, oder benötigen nur eine erneute Abgabe der korrigierten Lösung per Mail an den Betreuer. Der Betreuer entscheidet was nötig ist.
+
+## TODO
+* Checkbox disable
+* Show finished filter separate to sort
+* hbs helpers function separate module
+* DAO TODO delete
+* DB Call for filter refactoring (only one callback)
+* label for implement
+* CSS Base and extended.
+To: tblaser@hsr.ch, cc: michael
