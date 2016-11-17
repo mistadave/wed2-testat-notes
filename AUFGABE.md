@@ -38,11 +38,11 @@ Jede Gruppe hat die Möglichkeit für eine Nachkorrektur. Diese erfolgt eine Woc
 Nachkorrekturen müssen entweder nochmals präsentiert werden, oder benötigen nur eine erneute Abgabe der korrigierten Lösung per Mail an den Betreuer. Der Betreuer entscheidet was nötig ist.
 
 ## TODO
-* Checkbox disable
-* Show finished filter separate to sort
-* hbs helpers function separate module
-* DAO TODO delete
-* DB Call for filter refactoring (only one callback)
-* label for implement
-* CSS Base and extended.
+* Checkbox disable -> std !
+* Show finished filter separate to sort -> kas  !
+* hbs helpers function separate module -> std !
+* DAO TODO comment delete -> kas !
+* DB Call for filter refactoring (only one callback) -> kas
+* label for implement -> std
+* CSS Base and extended. -> std !
 To: tblaser@hsr.ch, cc: michael
