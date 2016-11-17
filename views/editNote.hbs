@@ -3,10 +3,6 @@
     <form>
         {{#if note}}
             <div class="">
-                <label>Status</label>
-                <input type="checkbox" name="done" {{#if note.done}}checked{{/if}}><label>Finished</label>
-            </div>
-            <div class="">
                 <label>Titel</label>
                 <input type="text" name="title" value="{{note.title}}">
             </div>
@@ -27,8 +23,12 @@
 
             </div>
             <div>
-                <label>Due To:</label>
+                <label>Fertig bis:</label>
                 <input type="date" name="dueToDate" value="{{note.dueToDate}}">
+            </div>
+            <div class="">
+                <label>Status</label>
+                <input type="checkbox" name="done" {{#if note.done}}checked{{/if}}><label>Erledigt!</label>
             </div>
             <div class="">
                 <button class="button" type="submit" formaction="/notes/edit/{{note._id}}" formmethod="post">Update
@@ -36,7 +36,7 @@
                 <button class="button" type="submit" formaction="/" formmethod="get">Back</button>
             </div>
         {{else}}
-            <div class="">No data yet</div>
+            <div class="">Keine Todo gefunden!</div>
         {{/if}}
     </form>
 </div>
