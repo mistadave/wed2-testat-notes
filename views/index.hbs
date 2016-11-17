@@ -28,7 +28,12 @@
             {{#each notes}}
                 <div class="inline-box">
                     <div class="box box-left">
-                        <input type="checkbox" name="done" {{#if done}}checked{{/if}}><label>Finished</label>
+                        <!--<input disabled type="checkbox" name="done" {{#if
+                                done}}checked{{/if}}><label>Finished</label>-->
+                        <label class="switch">
+                            <input disabled type="checkbox" {{#if done}}checked{{/if}}>
+                            <div class="slider round"></div>
+                        </label>
                     </div>
                     <div class="box box-middle">
                         <span>{{title}}</span>
