@@ -1,5 +1,5 @@
 function sortNotes(req, res, next) {
-    var sortAlgo;
+    var sort;
     var sortOrder;
     if(!req.session.sortOrder) {
         sortOrder = 1;
@@ -10,20 +10,18 @@ function sortNotes(req, res, next) {
     if(req.params.name === req.session.sort) {
         sortOrder = req.session.sortOrder === 1 ? -1 : 1;
         req.session.sortOrder = sortOrder;
-    } else if(req.params.name  === "/sortNotes/dueToDate" || req.params.name === "/sortNotes/addDate" || req.params.name === "/sortNotes/importance" || req.params.name === "/sortNotes/done") {
-        req.session.sortOrder = 1;
     }
     if(req.params.name) {
-        sortAlgo = req.params.name;
-        req.session.sort = sortAlgo;
+        sort = req.params.name;
+        req.session.sort = sort;
     }
      else if(req.session.sort) {
-            sortAlgo = req.session.sort;
+            sort = req.session.sort;
     } else {
-        sortAlgo = "_id";
-        req.session.sort = sortAlgo;
+        sort = "_id";
+        req.session.sort = sort;
     }
-    switch(sortAlgo) {
+    switch(sort) {
         case 'dueToDate':
             req.session.sort = 'dueToDate';
             break;
@@ -32,9 +30,6 @@ function sortNotes(req, res, next) {
             break;
         case 'importance':
             req.session.sort = 'importance';
-            break;
-        case 'done':
-            req.session.sort = 'done';
             break;
         default:
             req.session.sort = '_id';

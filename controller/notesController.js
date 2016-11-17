@@ -17,20 +17,15 @@ module.exports.showNewNote = function(req, res) {
 };
 
 module.exports.getNotes = function(req, res) {
-    notesDAO.all(req.session.sort, req.session.sortOrder, function (err, notes) {
+    notesDAO.all(req.session.filter, req.session.sort, req.session.sortOrder, function (err, notes) {
         res.render("index", {
             title: "My notes",
             style: style.getStyle(req, res),
             notes: notes,
-            done: sessionDone(req)
+            done: req.session.filter
         });
     });
 };
-
-function sessionDone(req) {
-    "use strict";
-    return (req.session.sortOrder === 1 && req.session.sort === 'done') ? true : false;
-}
 
 module.exports.getNote = function(req, res) {
     notesDAO.get(req.params.id, function (err, note) {

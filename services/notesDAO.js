@@ -47,34 +47,30 @@ function publicGet(id, callback) {
     });
 }
 
-function publicAll(sorting, sortingOrder, callback) {
-    if(sorting === "done") {
-        if(sortingOrder === 1) {
-            db.find({"done": true}).sort({}).exec(function(err,doc) {
-                callback(err, doc);
-            });
-        } else if(sortingOrder === -1) {
-            db.find({}).sort({}).exec(function(err,doc) {
-                callback(err, doc);
-            });
-        }
-    } else if(sorting === "dueToDate") {
-        db.find({}).sort({"dueToDate": sortingOrder}).exec(function(err,doc) {
-            callback(err,doc);
-        });
-    } else if(sorting === "addDate") {
-        db.find({}).sort({"addDate": sortingOrder}).exec(function(err,doc) {
-            callback(err,doc);
-        });
-    } else if(sorting === "importance") {
-        db.find({}).sort({"importance": sortingOrder}).exec(function(err,doc) {
-            callback(err,doc);
-        });
-    } else {
-        db.find({}).sort({}).exec(function(err,doc) {
-            callback(err,doc);
-        });
+function publicAll(filter, sorting, sortingOrder, callback) {
+    var sortObject;
+    var filterObject;
+    switch(sorting) {
+        case 'dueToDate':
+            sortObject = {'dueToDate' : sortingOrder};
+            break;
+        case 'addDate':
+            sortObject = {'addDate' : sortingOrder};
+            break;
+        case 'importance':
+            sortObject = {'importance' : sortingOrder};
+            break;
+        default:
+            sortObject = {};
     }
+    if(filter) {
+        filterObject = {"done" : filter};
+    } else {
+        filterObject = {};
+    }
+    db.find(filterObject).sort(sortObject).exec(function(err,doc) {
+        callback(err,doc);
+    });
 
 }
 
