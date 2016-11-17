@@ -48,9 +48,6 @@ function publicGet(id, callback) {
 }
 
 function publicAll(sorting, sortingOrder, callback) {
-    // TODO: problem with string conversion sorting, does not work as variable passing
-    console.log("publicAll sorting outside: " + sorting);
-    console.log("typeof: " + typeof(sorting));
     if(sorting === "done") {
         if(sortingOrder === 1) {
             db.find({"done": true}).sort({}).exec(function(err,doc) {
