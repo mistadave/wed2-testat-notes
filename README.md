@@ -23,5 +23,3 @@ npm start
 # Windows with debug
 set DEBUG=wed2:* & npm start
 ```
-
-* just because i can do it ^^

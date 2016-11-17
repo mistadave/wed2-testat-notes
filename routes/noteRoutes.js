@@ -14,5 +14,3 @@ router.post("/notes/edit/:id", notes.updateNote);
 router.get('/sortNotes/:name', filter.filterNotes, sort.sortNotes, notes.sortedNotes);
 
 module.exports = router;
-
-//Just because I can do it ^^

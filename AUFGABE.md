@@ -42,5 +42,4 @@ Nachkorrekturen müssen entweder nochmals präsentiert werden, oder benötigen n
 * hbs helpers function separate module -> std !
 * label for implement -> std
 * CSS Base and extended. -> std !
-* just because I can do it ^^
 To: tblaser@hsr.ch, cc: michael

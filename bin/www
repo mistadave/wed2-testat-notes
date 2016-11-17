@@ -90,5 +90,3 @@ function onListening() {
         : 'port ' + addr.port;
     debug('Listening on ' + bind);
 }
-
-//Just because I can do it ^^
