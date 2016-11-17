@@ -52,3 +52,5 @@ module.exports.updateNote = function (req, res) {
 module.exports.sortedNotes = function(req, res) {
     res.redirect("/");
 };
+
+//Just because I can do it ^^

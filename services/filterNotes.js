@@ -16,3 +16,5 @@ function filterNotes(req, res, next) {
 }
 
 module.exports = {filterNotes: filterNotes};
+
+//Just because I can do it ^^
