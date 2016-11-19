@@ -39,10 +39,7 @@ Nachkorrekturen müssen entweder nochmals präsentiert werden, oder benötigen n
 
 ## TODO
 * Checkbox disable -> std !
-* Show finished filter separate to sort -> kas  !
 * hbs helpers function separate module -> std !
-* DAO TODO comment delete -> kas !
-* DB Call for filter refactoring (only one callback) -> kas
 * label for implement -> std
 * CSS Base and extended. -> std !
 To: tblaser@hsr.ch, cc: michael
