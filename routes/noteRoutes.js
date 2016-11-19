@@ -4,7 +4,7 @@ var notes = require('../controller/notesController.js');
 var style = require('../services/styleSwitcher');
 var sort = require('../services/sortNotes.js');
 router.get("/", sort.sortNotes, notes.getNotes);
-router.get("/changeStyle", style.changeStyle);
+router.post("/changeStyle", style.changeStyle);
 router.get("/notes/new", notes.showNewNote);
 router.get("/notes", notes.getNotes);
 router.get("/notes/:id", notes.getNote);

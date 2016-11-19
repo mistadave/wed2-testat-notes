@@ -1,24 +1,24 @@
 function changeStyle(req, res) {
-    if(!req.session.style) {
-        req.session.style = "default.css";
-    } else {
-        switch(req.session.style) {
-            case 'default.css':
-                req.session.style = 'style2.css';
-                break;
-            case 'style2.css':
-                req.session.style = 'default.css';
-                break;
-            default:
-                req.session.style = 'default.css';
-        }
+    var style = req.body.style;
+    console.log("style submited: " + style);
+    console.log("style in session: " + req.session.style);
+    switch (style) {
+        case 'hackey':
+            req.session.style = 'hackey.css';
+            break;
+        case 'girlie':
+            req.session.style = 'girlie.css';
+            break;
+        default:
+            req.session.style = '';
     }
+
     res.redirect("/");
 }
 
 function getStyle(req, res) {
     if (!req.session.style) {
-        req.session.style = "default.css";
+        req.session.style = "";
     }
     return req.session.style;
 }

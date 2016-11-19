@@ -23,6 +23,7 @@ app.use(express.static(relative('public')));
 // view engine setup
 hbs.registerHelper('stars', hbsHelper.getStars);
 hbs.registerHelper('dropimportance', hbsHelper.importance);
+hbs.registerHelper('renderStyle', hbsHelper.renderStyle);
 app.engine('hbs', hbs.express4({
     defaultLayout: relative('views/layouts/default.hbs')
 }));
