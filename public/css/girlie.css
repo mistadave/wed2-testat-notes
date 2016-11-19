@@ -1,0 +1,40 @@
+@font-face {
+    font-family: IndieFlower;
+    src: url(../font/IndieFlower.ttf) format('truetype');
+}
+
+body {
+    color: #1e1e1e;
+    background: #ff17f7;
+    font: 14px IndieFlower, Helvetica, Arial, sans-serif;
+    background-image: url("../images/decorative-flower-design.png");
+    background-repeat: repeat;
+}
+
+button, textarea, input, select {
+    font: 14px IndieFlower;
+}
+
+h3:after {
+    border: 1px solid #adadad;
+}
+
+.inline-box {
+    border: 1px solid #CAD0D2;
+}
+
+.button {
+    background-color: #b935ff;
+    border: 1px solid #560f74;
+    box-shadow: inset 0 0 0.5rem #6c1292;
+    color: #000000;
+}
+
+.button:hover {
+    background-color: #560f74;
+    color: rgb(214, 127, 255);
+}
+
+.nothing {
+    background-color: #b935ff;
+}

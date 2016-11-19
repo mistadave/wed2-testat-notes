@@ -2,35 +2,34 @@
 <div class="flex-order">
     <form>
         {{#if note}}
-            <div class="">
-                <label>Titel</label>
-                <input type="text" name="title" value="{{note.title}}">
+            <div class="form-item">
+                <label for="title">Titel</label>
+                <input type="text" name="title" id="title" value="{{note.title}}">
             </div>
-            <div class="">
-                <label>Beschreibung</label>
-                <textarea name="description">{{note.description}}</textarea>
+            <div class="form-item">
+                <label for="description">Beschreibung</label>
+                <textarea name="description" id="description">{{note.description}}</textarea>
             </div>
-            <div class="">
-                <label>Wichtigkeit: </label>
-                <select name="importance">
+            <div class="form-item">
+                <label for="importance">Wichtigkeit: </label>
+                <select name="importance" id="importance">
                     {{#dropimportance note.importance}}
-
                     {{/dropimportance}}
-                    <!--<option selected="selected">
-                        {{note.importance}}
-                    </option>-->
                 </select>
 
             </div>
-            <div>
-                <label>Fertig bis:</label>
-                <input type="date" name="dueToDate" value="{{note.dueToDate}}">
+            <div class="form-item">
+                <label for="dueToDate">Fertig bis:</label>
+                <input type="date" id="dueToDate" name="dueToDate" value="{{note.dueToDate}}">
             </div>
-            <div class="">
-                <label>Status</label>
-                <input type="checkbox" name="done" {{#if note.done}}checked{{/if}}><label>Erledigt!</label>
+            <div class="form-item status">
+                <label for="done">Status</label>
+                <label class="switch">
+                    <input id="done" name="done" type="checkbox" {{#if note.done}}checked{{/if}}>
+                    <div class="slider round"></div>
+                </label>
             </div>
-            <div class="">
+            <div class="form-button">
                 <button class="button" type="submit" formaction="/notes/edit/{{note._id}}" formmethod="post">Update
                 </button>
                 <button class="button" type="submit" formaction="/" formmethod="get">Back</button>

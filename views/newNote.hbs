@@ -17,9 +17,12 @@
             <label>Fertig bis</label>
             <input type="date" name="dueToDate" placeholder="dd.mm.yyyy" required/>
         </div>
-        <div class="form-item">
-            <label> </label>
-            <input type="checkbox" name="done"><span class="span-checkbox">Erledigt!</span>
+        <div class="form-item status">
+            <label for="done">Status</label>
+            <label class="switch">
+                <input id="done" name="done" type="checkbox" {{#if note.done}}checked{{/if}}>
+                <div class="slider round"></div>
+            </label>
         </div>
         <div class="form-button">
             <button class="button" type="submit">Anlegen</button>

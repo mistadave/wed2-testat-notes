@@ -3,9 +3,14 @@
     <form>
         <div class="">
             <button class="button" type='submit' formaction="/notes/new" formmethod="get">Create new Note</button>
-            <button class="button right" type="submit" formaction="/changeStyle" formmethod="get">Style-Switcher
+            <select class="button right" name="style">
+                <!-- onchange="this.form.action='/changeStyle'; this.form.method='post'; this.form.submit();"-->
+                {{#renderStyle style}}{{/renderStyle}}
+            </select>
+            <button class="button right" type="submit" formaction="/changeStyle" formmethod="post">Style-Switcher
             </button>
         </div>
+        <div style="float:left;"></div>
         <div class="">
             <button class="button" type="submit" formaction="/sortNotes/dueToDate" formmethod="get">By finish Date
             </button>
@@ -28,7 +33,12 @@
             {{#each notes}}
                 <div class="inline-box">
                     <div class="box box-left">
-                        <input type="checkbox" name="done" {{#if done}}checked{{/if}}><label>Finished</label>
+                        <!--<input disabled type="checkbox" name="done" {{#if
+                                done}}checked{{/if}}><label>Finished</label>-->
+                        <label class="switch">
+                            <input disabled type="checkbox" {{#if done}}checked{{/if}}>
+                            <div class="slider round"></div>
+                        </label>
                     </div>
                     <div class="box box-middle">
                         <span>{{title}}</span>
