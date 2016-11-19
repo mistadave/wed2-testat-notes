@@ -11,6 +11,6 @@ router.get("/notes", notes.getNotes);
 router.get("/notes/:id", notes.getNote);
 router.post("/notes/create", notes.createNote);
 router.post("/notes/edit/:id", notes.updateNote);
-router.get('/sortNotes/:name', sort.sortNotes, notes.sortedNotes);
+router.get('/sortNotes/:name', filter.filterNotes, sort.sortNotes, notes.sortedNotes);
 
 module.exports = router;
