@@ -13,6 +13,19 @@ To run the server with watching file changes just run the following command.
 gulp
 ```
 
+## First time start project
+
+In order to run the project, you need to have node-js installed on your machine. 
+You need nodejs  V6.12.0 or higher.
+
+[Download link](https://nodejs.org/en/download/)
+
+After successful installing node you need to install de dependencies of this project. Run the following command in your project folder.
+
+```bash
+npm install
+```
+
 ## Manual start server
 
 To start the server manually use the following command.
